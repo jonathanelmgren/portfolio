@@ -1,0 +1,159 @@
+.whatido {
+	.cardcontainer {
+		display: grid;
+		margin: 0 1em;
+		font-size: 0.8rem;
+		margin-top: 7em;
+		overflow: hidden;
+		box-shadow: 0 0 40px lighten(#000, 60%);
+		.card {
+			grid-column: 1;
+			grid-row: 1;
+			max-width: 45em;
+			width: 100%;
+			z-index: 5;
+			background-color: #fff;
+			padding: 1.5em;
+			margin: 0;
+			height:425px;
+			.title {
+				color: $primaryColor;
+				font-size: 1.45rem;
+				font-weight: 100;
+				margin: 0;
+				.span {
+					position: absolute;
+					transform: translateY(-2em);
+					opacity: 0;
+					color: $primaryColorDark;
+					font-weight: 500;
+				}
+				.active {
+					transition: all 1s;
+					transform: translateY(0);
+					opacity: 1;
+				}
+				.notactive {
+					transition: all 1s;
+					transform: translateY(2em);
+					opacity: 0;
+				}
+				.afterspan {
+					transition: margin 1s;
+					color: $primaryColor;
+				}
+			}
+		}
+		.cardmisc {
+			grid-row: 1;
+			grid-column: 1;
+			box-shadow: 0 0 40px lighten(#000, 60%);
+			z-index: 5;
+			background-color: $primaryColor;
+			padding: 0.7em;
+			color: white;
+			text-align: left;
+			transition: all 1s;
+			h3 {
+				text-align: center;
+				margin: 0;
+				text-transform: uppercase;
+				font-weight: 100;
+				margin-bottom: 1em;
+			}
+			h6 {
+				margin: 0;
+				font-weight: 400;
+				font-size: 1rem;
+			}
+			.misctitles {
+				ul {
+					font-weight: 100;
+					font-size: 0.8rem;
+					padding-left: 1.5em;
+					li {
+						margin-top: 0.5em;
+					}
+				}
+			}
+		}
+	}
+}
+@include for-tablet-landscape-up {
+	.whatido {
+		.cardcontainer {
+			display: grid;
+			grid-template-columns: 1fr 0.4fr;
+			.card {
+				grid-column: 1;
+				grid-row: 1;
+				max-width: 45em;
+				width: 100%;
+				z-index: 5;
+				background-color: #fff;
+				box-shadow: 0 0 40px lighten(#000, 60%);
+				padding: 1.5em;
+				font-size: 1rem;
+				margin: 0;
+				.title {
+					color: $primaryColor;
+					font-size: 2.2rem;
+					font-weight: 100;
+					margin: 0;
+					.span {
+						position: absolute;
+						transform: translateY(-2em);
+						opacity: 0;
+						color: $primaryColorDark;
+						font-weight: 500;
+					}
+					.active {
+						transition: all 1s;
+						transform: translateY(0);
+						opacity: 1;
+					}
+					.notactive {
+						transition: all 1s;
+						transform: translateY(2em);
+						opacity: 0;
+					}
+					.afterspan {
+						transition: margin 1s;
+						color: $primaryColor;
+					}
+				}
+			}
+			.cardmisc {
+				grid-column: 2;
+				grid-row: 1;
+				box-shadow: 0 0 40px lighten(#000, 60%);
+				z-index: 5;
+				background-color: $primaryColor;
+				padding: 1.5em;
+				color: white;
+				text-align: left;
+				h3 {
+					margin: 0;
+					text-transform: uppercase;
+					font-weight: 100;
+					margin-bottom: 1em;
+				}
+				h6 {
+					margin: 0;
+					font-weight: 400;
+					font-size: 1rem;
+				}
+				.misctitles {
+					ul {
+						font-weight: 100;
+						font-size: 0.8rem;
+						padding-left: 1.5em;
+						li {
+							margin-top: 0.5em;
+						}
+					}
+				}
+			}
+		}
+	}
+}

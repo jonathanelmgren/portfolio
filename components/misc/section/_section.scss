@@ -1,0 +1,17 @@
+@import '../../sections/header/header';
+@import '../../sections/portfolio/portfolio';
+@import '../../sections/about/about';
+@import '../../sections/contact/contact';
+@import '../../sections/whatido/whatido';
+
+.section {
+	display: grid;
+	margin: 0 auto;
+	height: 100vh;
+	z-index: 1;
+	place-items: center;
+	scroll-snap-align: start;
+}
+@include for-desktop-up {
+
+}

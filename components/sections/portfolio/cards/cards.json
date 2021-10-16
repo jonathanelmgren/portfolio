@@ -1,0 +1,82 @@
+[
+	{
+		"id": "0",
+		"title": "Wrap & Go",
+		"description": "TBC",
+		"stack": ["wordpress"],
+		"image": "https://i.ibb.co/GtK0jbx/wrapngo-min.jpg",
+		"source": "#",
+		"live": "#",
+		"notables": ["Custom JS slider", "Elementor"]
+	},
+	{
+		"id": "1",
+		"title": "DadJoke Generator",
+		"description": "TBC",
+		"stack": ["reactjs", "nodejs"],
+		"image": "https://lh3.googleusercontent.com/inworkHiIX74DwFvpP-TNl9xLkM8FjCDxIxMeiEuEe6w9dUvd-DZ_xmkMSJE9tsT2d8hJhlNlsFOKrQiVOFIlMvl1AeuVL6kUtk7eC6MNUMnVfNmPd4c8A4D0DshgoTdRch1qxhH=w2400",
+		"source": "#",
+		"live": "#",
+		"notables": ["aa", "bb", "cc"]
+	},
+	{
+		"id": "2",
+		"title": "Häst & Sånt",
+		"description": "TBC",
+		"stack": ["Wordpress"],
+		"image": "https://i.ibb.co/0tShx7j/hastosant-min.jpg",
+		"source": "#",
+		"live": "#",
+		"notables": ["E-commerce", "Klarna"]
+	},
+	{
+		"id": "3",
+		"title": "Zaczess",
+		"description": "TBC",
+		"stack": ["Wordpress"],
+		"image": "https://i.ibb.co/9hCsW5k/zaczess-min.jpg",
+		"source": "#",
+		"live": "#",
+		"notables": ["E-commerce", "Klarna", "Custom Wordpress"]
+	},
+	{
+		"id": "4",
+		"title": "Stjärnglädje",
+		"description": "TBC",
+		"stack": ["wordpress"],
+		"image": "https://i.ibb.co/X381RcQ/stjarngladje-min.jpg",
+		"source": "#",
+		"live": "#",
+		"notables": ["Elementor"]
+	},
+	{
+		"id": "5",
+		"title": "KBT-Coacherna",
+		"description": "TBC",
+		"stack": ["wordpress"],
+		"image": "https://i.ibb.co/CQ4vF5x/kbtcoacherna-min.jpg",
+		"source": "#",
+		"live": "#",
+		"notables": ["Elementor"]
+	},
+	{
+		"id": "6",
+		"title": "Smart Home Solutions",
+		"description": "TBC",
+		"stack": ["wordpress"],
+		"image": "https://i.ibb.co/X3Snfxd/smarthomesolutions-min.jpg",
+		"source": "#",
+		"live": "#",
+		"notables": ["Elementor"]
+	},
+	{
+		"id": "7",
+		"title": "Borås IT",
+		"description": "TBC",
+		"stack": ["wordpress"],
+		"image": "https://i.ibb.co/PDpzVxD/borasit-min.jpg",
+		"source": "#",
+		"live": "#",
+		"notables": ["Elementor"]
+	}
+]

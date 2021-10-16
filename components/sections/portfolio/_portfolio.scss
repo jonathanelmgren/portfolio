@@ -1,0 +1,9 @@
+@import './cards/cards';
+@import '../../misc/pagetitle/pagetitle';
+
+.portfolio {
+	display:grid;
+	align-items: center;
+	grid-template-rows: 1fr;
+	grid-template-columns: 1fr;
+}
