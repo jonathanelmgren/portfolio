@@ -117,17 +117,3 @@
 		cursor: pointer;
 	}
 }
-.copiedcontainer {
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -80%);
-	.messagebubble {
-		max-width: 15em;
-		background: $primaryColor;
-		font-size: 1rem;
-		padding: 12px;
-		border-radius: 10px;
-		color: white;
-	}
-}

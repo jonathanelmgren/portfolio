@@ -28,7 +28,7 @@ const Navigation = () => {
 	let xitteration = 50
 	let yitteration = 50
 
-	let hoverZone = 500
+	let hoverZone = 350
 
 	useEffect(() => {
 		animatedCurve()
@@ -59,7 +59,7 @@ const Navigation = () => {
 		setTestCurve((prevState) => ({ ...prevState, y: easeOut(yitteration, testCurve.y, mousePosition.y - testCurve.y, 100) }))
 
 		let anchorDistance = 200
-		let curviness = anchorDistance - 80
+		let curviness = anchorDistance - 60
 
 		setCurve('M60,' + height + 'H0V0h60v' + (testCurve.y - anchorDistance) + 'c0,' + curviness + ',' + testCurve.x + ',' + curviness + ',' + testCurve.x + ',' + anchorDistance + 'S60,' + testCurve.y + ',60,' + (testCurve.y + anchorDistance * 2) + 'V' + height + 'z')
 	}
@@ -100,7 +100,7 @@ const Navigation = () => {
 	const mobileNav = () => {
 		return (
 			<>
-				<div className={styles.mobilehamburger} onMouseEnter={() => setMenuExpanded(!menuExpanded)} onMouseLeave={() => setMenuExpanded(!menuExpanded)}>
+				<div className={styles.mobilehamburger} onMouseLeave={() => setMenuExpanded(!menuExpanded)}>
 					<svg id='burgericon' xmlns='http://www.w3.org/2000/svg' width='70' height='60'>
 						<g className='icon'>
 							<rect className='frstbar' x='10' y='12' width='50' height='7' rx='3' ry='3' fill='#fff' />

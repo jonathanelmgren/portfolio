@@ -1,3 +1,6 @@
+.contactContainer {
+	position:relative;
+}
 .contactbtn {
 	font-family: inherit;
 	color: $primaryColor;
@@ -5,18 +8,16 @@
 	place-content: center;
 	border: 2px solid $primaryColor;
 	padding: 5px 10px;
+	position: relative;
 	svg {
 		margin-right: 0.5em;
 	}
 }
 .copiedcontainer {
-	position: fixed;
-	left: 50%;
-	top: 80%;
-	transform: translate(-50%, -80%);
+	position: absolute;
+	top: -25%;
 	.messagebubble {
 		background: $primaryColor;
-		max-width: 6em;
 		font-size: 1rem;
 		padding: 12px;
 		border-radius: 10px;
