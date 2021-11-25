@@ -8,9 +8,8 @@
 	background-size: cover;
 	background-position: fixed;
 	z-index: 0;
-	scroll-snap-type: y mandatory;
 	overflow-y: scroll;
 	height: 100vh;
 	overflow-x: hidden;
-	scroll-behavior: smooth;
+	scroll-behavior: smooth
 }

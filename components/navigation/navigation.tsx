@@ -100,7 +100,7 @@ const Navigation = () => {
 	const mobileNav = () => {
 		return (
 			<>
-				<div className={styles.mobilehamburger} onMouseLeave={() => setMenuExpanded(!menuExpanded)}>
+				<div className={styles.mobilehamburger} onClick={() => setMenuExpanded(true)} onMouseLeave={() => setMenuExpanded(!menuExpanded)}>
 					<svg id='burgericon' xmlns='http://www.w3.org/2000/svg' width='70' height='60'>
 						<g className='icon'>
 							<rect className='frstbar' x='10' y='12' width='50' height='7' rx='3' ry='3' fill='#fff' />
