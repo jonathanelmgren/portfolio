@@ -50,6 +50,9 @@
 						margin-top: 1em;
 						font-size: 1rem;
 					}
+					p {
+						font-size: 0.7rem;
+					}
 					display: grid;
 					grid-template-columns: 0.5fr 1fr;
 					grid-template-rows: 1fr;
@@ -67,6 +70,17 @@
 					}
 					.toolscontainer {
 						.tools {
+							background-color: $primaryColor;
+							border-radius: 0 0 25px 0;
+							h5 {
+								padding-right: 5px;
+								font-size: 0.8rem;
+							}
+							ul {
+								li {
+									font-size: 0.7rem;
+								}
+							}
 							margin-top: -1em;
 							padding: 0.2em 0px 0.2em 0.4em;
 							width: 100%;
@@ -136,13 +150,16 @@
 					font-size: 1rem;
 					margin-left: 0em;
 					.description {
+						p {
+							font-size: 1rem;
+						}
 						h5 {
 							margin: 0;
 							margin-top: 1em;
 							font-size: 1rem;
 						}
 						display: grid;
-						grid-template-columns: 0.5fr 1fr;
+						grid-template-columns: 0.3fr 1fr;
 						grid-template-rows: 1fr;
 						gap: 10px;
 						ul {
@@ -158,12 +175,13 @@
 						}
 						.toolscontainer {
 							.tools {
+
 								margin-top: -1em;
 								padding: 0.8em;
 								width: 100%;
 								background-color: $primaryColor;
 								position: relative;
-								border-radius: 0px 0px 5em 0px;
+								border-radius: 0px 0px 3em 0px;
 							}
 						}
 					}

@@ -99,7 +99,7 @@ const Cards = () => {
 							<div className={styles.description}>
 								<div className={styles.toolscontainer}>
 									<div className={styles.tools}>
-										<h5>Notables:</h5>
+										<h5>Tools:</h5>
 										<ul>
 											{card.notables.map((x: any) => (
 												<li key={Math.random()}>{x}</li>
@@ -121,7 +121,7 @@ const Cards = () => {
 		return null
 	}
 
-	const displayCard = () => {
+	const displayCards = () => {
 		return (
 			<>
 				<div className={styles.cardcontainer} style={{ marginLeft: marginDimensions() }}>
@@ -148,7 +148,7 @@ const Cards = () => {
 		)
 	}
 
-	return displayCard()
+	return displayCards()
 }
 
 export default Cards

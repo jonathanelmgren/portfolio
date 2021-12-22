@@ -1,82 +1,92 @@
 [
 	{
 		"id": "0",
-		"title": "Wrap & Go",
-		"description": "TBC",
-		"stack": ["wordpress"],
-		"image": "https://i.ibb.co/GtK0jbx/wrapngo-min.jpg",
+		"title": "Admin application",
+		"description": "I created a fullstack application for the company Buddy Co. Containing multiple segments like a Backlog Indicator, Schedule/Route booking with distance calculations, Product management with different roles. The following 3 cards will contain these segments. If you are interested in viewing these projects, please contact me.",
+		"stack": ["reactjs", "nodejs"],
+		"image": "https://i.ibb.co/Mssp16s/administrator-business-man-financial-inspector-and-2021-08-29-01-04-36-utc.jpg",
 		"source": "#",
 		"live": "#",
-		"notables": ["Custom JS slider", "Elementor"]
+		"notables": ["Fullstack", "Auth", "Roles", "useContext"]
 	},
 	{
 		"id": "1",
-		"title": "DadJoke Generator",
-		"description": "TBC",
-		"stack": ["reactjs", "nodejs"],
-		"image": "https://lh3.googleusercontent.com/inworkHiIX74DwFvpP-TNl9xLkM8FjCDxIxMeiEuEe6w9dUvd-DZ_xmkMSJE9tsT2d8hJhlNlsFOKrQiVOFIlMvl1AeuVL6kUtk7eC6MNUMnVfNmPd4c8A4D0DshgoTdRch1qxhH=w2400",
+		"title": "Backlog Indicator",
+		"description": "Since Buddy Co. is a service-company they need to keep their promise of helping the customer in 48 hours, the Backlog Indicator helps with that significantly since you get a list of tasks soon to be backlogged with a map. The grid is interactive and you can make certain actions with selected tasks.",
+		"stack": ["reactjs"],
+		"image": "https://i.ibb.co/VvkQbfK/backlog-of-cases-after-coronavirus-isolation-2021-09-24-03-17-31-utc.jpg",
 		"source": "#",
 		"live": "#",
-		"notables": ["aa", "bb", "cc"]
+		"notables": ["Google Maps"]
 	},
 	{
 		"id": "2",
-		"title": "Häst & Sånt",
-		"description": "TBC",
-		"stack": ["Wordpress"],
-		"image": "https://i.ibb.co/0tShx7j/hastosant-min.jpg",
+		"title": "Scheduler/Routebooking",
+		"description": "A route booking system for admins and schedule for employees. With an easy way to add appointments for different categories, recurring and much more. Custom built back-end in Node JS with automatic distance calculating from the appointment before to the next one to calculate driving times.",
+		"stack": ["reactjs", "nodejs"],
+		"image": "https://i.ibb.co/jHhFnZ2/business-scheduling-unrecognizable-woman-working-2021-08-29-17-47-42-utc.jpg",
 		"source": "#",
 		"live": "#",
-		"notables": ["E-commerce", "Klarna"]
+		"notables": ["Distance-metrix", "Google Maps"]
 	},
 	{
 		"id": "3",
-		"title": "Zaczess",
-		"description": "TBC",
-		"stack": ["Wordpress"],
-		"image": "https://i.ibb.co/9hCsW5k/zaczess-min.jpg",
+		"title": "Product Management",
+		"description": "Each employee has a set of products which the Buddy Co. needed to keep track of, together with order-handling the sales. With a custom-built backend with NodeJS it was an easy task. The employee can request restock, register sales and see their stock. Admins can create categories, new products and more.",
+		"stack": ["reactjs", "nodejs"],
+		"image": "https://i.ibb.co/2PDN084/different-cables-on-the-table-2021-08-26-16-18-08-utc.jpg",
 		"source": "#",
 		"live": "#",
-		"notables": ["E-commerce", "Klarna", "Custom Wordpress"]
+		"notables": ["Order-handling", "Product-managing"]
 	},
 	{
 		"id": "4",
-		"title": "Stjärnglädje",
-		"description": "TBC",
+		"title": "Wrap & Go",
+		"description": "Wrap & Go is a website I designed and created with the famous Wordpress plugin Elementor. Wrap & Go wanted a simple and cost effective website where they could sell wrapping papers to schools and associations that in return could resell the wrappers to earn money. An easy way for students and club members to earn money.",
 		"stack": ["wordpress"],
-		"image": "https://i.ibb.co/X381RcQ/stjarngladje-min.jpg",
+		"image": "https://i.ibb.co/GtK0jbx/wrapngo-min.jpg",
 		"source": "#",
-		"live": "#",
+		"live": "https://wrapandgo.se/",
 		"notables": ["Elementor"]
 	},
 	{
 		"id": "5",
-		"title": "KBT-Coacherna",
-		"description": "TBC",
-		"stack": ["wordpress"],
-		"image": "https://i.ibb.co/CQ4vF5x/kbtcoacherna-min.jpg",
+		"title": "Häst & Sånt",
+		"description": "With the same owner of Wrap & Go being happy with their website they came to me for an E-commerce site where they wanted to sell calendars, posters etc. They print everything on-demand from their mothercompany Etcetera Offset AB",
+		"stack": ["Wordpress"],
+		"image": "https://i.ibb.co/0tShx7j/hastosant-min.jpg",
 		"source": "#",
-		"live": "#",
-		"notables": ["Elementor"]
+		"live": "https://hastochsant.se/",
+		"notables": ["E-commerce", "Klarna"]
 	},
 	{
 		"id": "6",
-		"title": "Smart Home Solutions",
-		"description": "TBC",
+		"title": "Stjärnglädje",
+		"description": "'A very clean and simple website' was requested for this one. A coffee shop combined with a flea market in a small town. This one was build using Wordpress and Elementor for the most cost-effective way to get a website up and running.",
 		"stack": ["wordpress"],
-		"image": "https://i.ibb.co/X3Snfxd/smarthomesolutions-min.jpg",
+		"image": "https://i.ibb.co/X381RcQ/stjarngladje-min.jpg",
 		"source": "#",
-		"live": "#",
+		"live": "https://stjarngladje.se/",
 		"notables": ["Elementor"]
 	},
 	{
 		"id": "7",
+		"title": "Smart Home Solutions",
+		"description": "A company who installs and configures smart homes. With competitive pricings you are able to get a fully customized smart home, since it's a start-up they wanted a cost effective website so this one is built with Wordpress and Elementor",
+		"stack": ["wordpress"],
+		"image": "https://i.ibb.co/X3Snfxd/smarthomesolutions-min.jpg",
+		"source": "#",
+		"live": "https://shsolutions.se/",
+		"notables": ["Elementor"]
+	},
+	{
+		"id": "8",
 		"title": "Borås IT",
-		"description": "TBC",
+		"description": "A company based in a medium-sized town that helps people and companies with their IT-related issues. With the plugin Elementor from Wordpress you can build amazing things in no time which generates a beautiful website in no time.",
 		"stack": ["wordpress"],
 		"image": "https://i.ibb.co/PDpzVxD/borasit-min.jpg",
 		"source": "#",
-		"live": "#",
+		"live": "https://boråsit.se/",
 		"notables": ["Elementor"]
 	}
 ]

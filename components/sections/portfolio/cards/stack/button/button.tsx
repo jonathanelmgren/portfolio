@@ -9,7 +9,7 @@ const CardButton = (props: any) => {
 
 	const classname = props.className ? props.className : ''
 	return (
-		<button className={`${style.buttontext} ${classname} ${hasLink(props.href) ? '' : style.disabled}`} onClick={() => (window.location.href = props.href)}>
+		<button className={`${style.buttontext} ${classname} ${hasLink(props.href) ? '' : style.disabled}`} onClick={() => (window.open(props.href,'_blank'))}>
 			{props.text}
 		</button>
 	)
