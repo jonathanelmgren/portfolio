@@ -32,7 +32,7 @@ const About = () => {
 
 	return (
 		<>
-			<div className={styles.imagecontainer}></div>
+			<div className={styles.imagecontainer} />
 			<div className={styles.card}>
 				{displayOneLiner()}
 				<div className={styles.description}>

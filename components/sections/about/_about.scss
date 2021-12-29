@@ -1,12 +1,19 @@
 .about {
+	grid-template-rows: 1fr 1fr;
 	place-content: center;
 	.imagecontainer {
+		margin: 0 auto;
+		margin-top: 1rem;
+		grid-row: 1;
 		background-image: url(./images/me.jpg);
 		justify-self: end;
+		max-width: 400px;
+		max-height: 600px;
+		width: 300px;
+		aspect-ratio: 1/1.2;
+		object-fit: cover;
 		background-size: cover;
 		background-position-x: 60%;
-		box-shadow: 0 0 40px lighten(#000, 60%);
-		grid-row: 1;
 	}
 	.card {
 		max-width: 45em;
@@ -33,9 +40,7 @@
 		}
 	}
 	.funpun {
-		
 		.title {
-			
 			align-self: center;
 			justify-self: center;
 			font-size: 1.4rem;
@@ -43,7 +48,7 @@
 		.misc {
 			font-size: 0.8rem;
 			display: flex;
-			
+
 			align-self: center;
 			justify-self: center;
 			.playbtn {
