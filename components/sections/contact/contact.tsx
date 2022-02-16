@@ -74,7 +74,7 @@ const Contact = () => {
 				</form>
 			</div>
 			<div className={styles.icons}>
-				<a href='mailto:jonathan@elmgren.codes'>
+				<a href='mailto:jonathan@elmgren.dev'>
 					<Image src={email} alt='EMAIL' />
 				</a>
 				<a href='https://github.com/jonathanelmgren'>
