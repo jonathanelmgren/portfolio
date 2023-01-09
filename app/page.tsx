@@ -1,9 +1,12 @@
+import { Section } from '../components/_common/_section/Section';
+import { Header } from '../components/_header/Header';
+
 export default function Home() {
   return (
     <main>
-      <div className=''>
-        HEj
-      </div>
+      <Section>
+        <Header />
+      </Section>
     </main>
   )
 }

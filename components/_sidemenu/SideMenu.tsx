@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useMousePosition } from '../../hooks/useMousePosition'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import { DesktopNav } from './Desktop'
@@ -24,7 +24,7 @@ const navItems = [
 ]
 
 export const SideMenu = () => {
-    const [menuExpanded, setMenuExpanded] = useState(true)
+    const [menuExpanded, setMenuExpanded] = useState(false)
     const [curve, setCurve] = useState('M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z')
     const [axis, setAxis] = useState({ x: 10, y: 0 })
     const { width, height } = useWindowDimensions()
