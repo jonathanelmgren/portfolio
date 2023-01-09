@@ -7,6 +7,9 @@ export default function Home() {
       <Section>
         <Header />
       </Section>
+      <Section>
+        <Header />
+      </Section>
     </main>
   )
 }

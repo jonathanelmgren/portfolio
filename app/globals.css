@@ -7,3 +7,11 @@
         transition: 1000ms all cubic-bezier(0.19, 1, 0.22, 1);
     }
 }
+
+::-webkit-scrollbar {
+    width: 0.4em;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #009bdf;
+    border-radius: 25px;
+}

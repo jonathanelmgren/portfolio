@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <html className={inter.className} lang="en">
       <head />
-      <body>
+      <body className='bg-[url("../public/background.png")] bg-cover bg-fixed'>
         <aside>
           <SideMenu />
         </aside>
