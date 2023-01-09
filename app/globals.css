@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .menu-transition {
+        transition: 1000ms all cubic-bezier(0.19, 1, 0.22, 1);
+    }
+}

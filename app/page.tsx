@@ -1,7 +1,9 @@
 export default function Home() {
   return (
     <main>
-      HEj
+      <div className=''>
+        HEj
+      </div>
     </main>
   )
 }
