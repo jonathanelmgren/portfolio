@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,11 +8,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-space--grotesk)', ...defaultTheme.fontFamily.sans]
+      },
       colors: {
         primary: 'var(--color-primary)',
+        primaryDark: 'var(--color-primary--dark)',
       }
     },
-
   },
   plugins: [],
 }

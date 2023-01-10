@@ -10,6 +10,16 @@
 
 :root {
     --color-primary: #009bdf;
+    --color-primary--dark: #014562;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+* {
+    box-sizing: border-box;
 }
 
 .copied::before {
@@ -37,4 +47,17 @@
 ::-webkit-scrollbar-thumb {
     background-color: var(--color-primary);
     border-radius: 25px;
+}
+
+.adjective {
+    opacity: 0;
+    transform: translateY(-2em);
+    transition: all 1s;
+}
+.adjective.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.adjective.reset {
+    transform: translateY(2em);
 }

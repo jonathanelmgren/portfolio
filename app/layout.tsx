@@ -1,8 +1,12 @@
 import './globals.css'
-import { Inter } from '@next/font/google'
+import { Space_Grotesk } from '@next/font/google'
 import { SideMenu } from '../components/_sidemenu/SideMenu'
 
-const inter = Inter({ subsets: ['latin'] })
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space--grotesk',
+  weight: ['300', '400', '500', '700'],
+  display: 'swap'
+})
 
 export default function RootLayout({
   children,
@@ -10,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className={inter.className} lang="en">
+    <html className={spaceGrotesk.variable} lang="en">
       <head />
       <body className='bg-[url("../public/background.png")] bg-cover bg-fixed'>
         <aside>

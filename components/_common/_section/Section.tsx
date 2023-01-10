@@ -8,7 +8,7 @@ interface Props {
 
 export const Section = ({ children, anchor }: Props) => {
   return (
-    <div id={anchor} className='min-h-screen flex justify-center mx-[10%]'>
+    <div id={anchor} className='min-h-screen flex items-center justify-center mx-[5%] md:mx-[10%]'>
       {children}
     </div>
   )

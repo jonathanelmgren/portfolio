@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useMousePosition } from '../../hooks/useMousePosition'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import { DesktopNav } from './Desktop'
@@ -24,8 +24,12 @@ export const SideMenu = () => {
     const [axis, setAxis] = useState({ x: 0, y: 0 })
     const { width, height } = useWindowDimensions()
 
-    const mousePosition = useMousePosition(animatedCurve)
+    const mousePosition = useMousePosition()
 
+    useEffect(() => {
+        animatedCurve()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[mousePosition])
 
     let targetX = 0
     let xitteration = 50
