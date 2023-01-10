@@ -1,9 +1,15 @@
-import React from 'react'
+import type { Paths } from '../../../lib/consts/paths'
 
-export const Section = ({children}: {children: React.ReactNode}) => {
+interface Props {
+  children: React.ReactNode
+  anchor: Paths
+}
+
+
+export const Section = ({ children, anchor }: Props) => {
   return (
-    <div className='min-h-screen flex justify-center mx-[10%]'>
-        {children}
+    <div id={anchor} className='min-h-screen flex justify-center mx-[10%]'>
+      {children}
     </div>
   )
 }

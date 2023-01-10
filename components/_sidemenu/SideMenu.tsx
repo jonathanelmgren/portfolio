@@ -16,12 +16,7 @@ const breakpoints = {
 
 const easeOut = (currentIteration: number, startValue: number, changeInValue: number, totalIterations: number) => changeInValue * (-Math.pow(2, (-10 * currentIteration) / totalIterations) + 1) + startValue
 
-const navItems = [
-    { href: '#header', text: 'Home' },
-    { href: '#case', text: 'Case' },
-    { href: '#about', text: 'About' },
-    { href: '#contact', text: 'Contact' },
-]
+
 
 export const SideMenu = () => {
     const [menuExpanded, setMenuExpanded] = useState(false)
@@ -66,10 +61,10 @@ export const SideMenu = () => {
     return breakpoints.laptop < width
         ?
         <DesktopNav axis={axis} curve={curve} menuState={menuExpanded} openMenu={setMenuExpanded}>
-            <NavItems links={navItems} />
+            <NavItems />
         </DesktopNav>
         :
         <MobileNav menuState={menuExpanded} openMenu={setMenuExpanded}>
-            <NavItems links={navItems} close={() => setMenuExpanded(false)} />
+            <NavItems close={() => setMenuExpanded(false)} />
         </MobileNav>
 }
