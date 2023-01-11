@@ -1,7 +1,7 @@
 export const Paths = {
     header: '#home',
     contact: '#contact',
-    case: '#case',
+    work: '#work',
     about: '#about',
     whatido: '#whatido'
 } as const
