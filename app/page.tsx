@@ -3,6 +3,7 @@ import { Header } from '../components/_header/Header';
 import { Work } from '../components/_work/Work';
 import { About } from '../components/_about/About';
 import { WhatIDo } from '../components/_whatido/WhatIDo';
+import { Contact } from '../components/_contact/Contact';
 import { Paths } from '../lib/consts/paths'
 
 export default function Home() {
@@ -19,6 +20,9 @@ export default function Home() {
       </Section>
       <Section anchor={Paths.work}>
         <About />
+      </Section>
+      <Section anchor={Paths.work}>
+        <Contact />
       </Section>
     </main>
   )
