@@ -12,16 +12,16 @@ export default function Home() {
       <Section anchor={Paths.header}>
         <Header />
       </Section>
-      <Section anchor={Paths.whatido}>
+      <Section title={'What I do'} anchor={Paths.whatido}>
         <WhatIDo />
       </Section>
-      <Section anchor={Paths.work}>
+      <Section title={'My work'} anchor={Paths.work}>
         <Work />
       </Section>
-      <Section anchor={Paths.work}>
+      <Section title={'About me'} anchor={Paths.about}>
         <About />
       </Section>
-      <Section anchor={Paths.work}>
+      <Section title={'Contact'} anchor={Paths.contact}>
         <Contact />
       </Section>
     </main>

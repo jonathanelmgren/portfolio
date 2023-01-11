@@ -3,12 +3,15 @@ import type { Paths } from '../../../lib/consts/paths'
 interface Props {
   children: React.ReactNode
   anchor: Paths
+  title?: string
 }
 
 
-export const Section = ({ children, anchor }: Props) => {
+export const Section = ({ title, children, anchor }: Props) => {
+
   return (
-    <div id={anchor} className='min-h-screen flex items-center justify-center mx-[5%] md:mx-[10%]'>
+    <div id={anchor.replace('#', '')} className='min-h-screen text-justify flex items-center justify-center mx-[5%] md:mx-[10%] relative'>
+      {title && <h3 className='clamp-text text-primary opacity-10 absolute top-12 leading-[0.8] -z-10 max-w-7xl'>{title}</h3>}
       {children}
     </div>
   )
