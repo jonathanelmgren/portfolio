@@ -11,6 +11,7 @@
 :root {
     --color-primary: #009bdf;
     --color-primary--dark: #014562;
+    --color-primary--light: #80d9ff;
 }
 
 html,
@@ -65,5 +66,5 @@ body {
 
 .clamp-text {
     text-transform: uppercase;
-    font-size: clamp(2rem, 13vw, 13rem);
+    font-size: clamp(2rem, 14vw, 13rem);
 }

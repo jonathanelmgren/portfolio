@@ -15,7 +15,7 @@ export default function Home() {
       <Section title={'What I do'} anchor={Paths.whatido}>
         <WhatIDo />
       </Section>
-      <Section title={'My work'} anchor={Paths.work}>
+      <Section title={'Case'} anchor={Paths.work}>
         <Work />
       </Section>
       <Section title={'About me'} anchor={Paths.about}>

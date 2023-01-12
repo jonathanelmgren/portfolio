@@ -10,9 +10,11 @@ interface Props {
 export const Section = ({ title, children, anchor }: Props) => {
 
   return (
-    <div id={anchor.replace('#', '')} className='min-h-screen text-justify flex items-center justify-center mx-[5%] md:mx-[10%] relative'>
-      {title && <h3 className='clamp-text text-primary opacity-10 absolute top-12 leading-[0.8] -z-10 max-w-7xl'>{title}</h3>}
-      {children}
+    <div id={anchor.replace('#', '')} className='min-h-screen text-justify flex flex-col items-center justify-center mx-[5%] md:mx-[10%]'>
+      {title && <h3 className='clamp-text text-primary opacity-10 leading-[0.8] -z-10 max-w-7xl mt-4'>{title}</h3>}
+      <div className='w-full my-auto pb-12'>
+        {children}
+      </div>
     </div>
   )
 }

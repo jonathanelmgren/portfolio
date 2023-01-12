@@ -14,6 +14,7 @@ module.exports = {
       colors: {
         primary: 'var(--color-primary)',
         primaryDark: 'var(--color-primary--dark)',
+        primaryLight: 'var(--color-primary--light)',
       },
       gridTemplateColumns:{
         aboutContainer: '35% 65%'
