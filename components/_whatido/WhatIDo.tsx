@@ -23,12 +23,8 @@ export const WhatIDo = () => {
         }, 2000)
     })
 
-    /*  const isCurrent = (span: string) => {
-         const i = adjectives.findIndex(span)
-     } */
-
     return (
-        <div className='overflow-hidden lg:overflow-visible flex flex-col-reverse md:flex-row h-fit justify-center bg-white shadow-lg lg:p-6 max-w-6xl relative'>
+        <div className='mx-auto overflow-hidden lg:overflow-visible flex flex-col-reverse md:flex-row h-fit justify-center bg-white shadow-lg lg:p-6 max-w-6xl relative'>
             <div className='md:mr-12 lg:p-0 px-6 pt-6 pb-14'>
                 <h4 className='mt-0 relative text-primary my-4 text-left text-2xl md:text-2xl lg:text-3xl'>I make&nbsp;
                     <span className='inline-block'>
@@ -48,8 +44,8 @@ export const WhatIDo = () => {
                 <p className='my-4'>I will most likely develop your application in React, maybe even with a framework like Next.js. If you also need a backend I can asure you nothing will go wrong with Node combined with Express and MongoDB (MERN FTW).</p>
                 <p className='mb-4 mt-12'>Is the above text just gibberish for you? Don&#39;t panic - I make applications using some of the most used programming languages in the market which makes your application high-end and top modern.</p>
             </div>
-            <div onClick={() => setMobileTools(!mobileTools)} className={`transition-all shadow-lg duration-300 bg-primary text-white lg:-m-8 p-2 w-full text-sm font-thin absolute lg:p-6 lg:static bottom-0 overflow-hidden ${mobileTools ? 'translate-y-[83%]' : 'translate-y-0'} lg:translate-y-0`}>
-                <h6 className={`text-center text-lg mb-4 uppercase ${mobileTools ? 'after:content-["_↑"]' : 'after:content-["↓"]'} after:ml-2 lg:after:hidden`}>Tools I&rsquo;ve worked with</h6>
+            <div onClick={() => setMobileTools(!mobileTools)} className={`transition-all shadow-lg duration-300 bg-primary text-white lg:-m-8 p-2 w-full text-sm font-thin absolute lg:p-6 lg:static bottom-0 overflow-hidden ${!mobileTools ? 'translate-y-[83%]' : 'translate-y-0'} lg:translate-y-0`}>
+                <h6 className={`text-center text-lg mb-4 uppercase ${!mobileTools ? 'after:content-["_↑"]' : 'after:content-["↓"]'} after:ml-2 lg:after:hidden`}>Tools I&rsquo;ve worked with</h6>
                 <div>
                     <ul className='pl-6 list-disc columns-2'>
                         {tools.map(t => <li key={t}>{t}</li>)}
