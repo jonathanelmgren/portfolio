@@ -33,7 +33,7 @@ export const About = () => {
                 </h3>
                 <p>I am a developer with both frontend and backend experience. I am self taught and have a big passion for coding. My coding experience started in my early teenage years when I downloaded Visual Basic.NET and started my .NET journey. After watching youtube tutorials on how to build a calculator I stumbled across webdevelopment courses. This was in 2013 and I have been hooked since but it was not until 2018 I actually found my self confident and brave enough to start my company and apply for projects.</p>
                 <p>I am a 28 year old dude that loves pizza and dad jokes a little too much for my wifes liking. We live in a house in literally nowhere with our cat Baltazar. I work solely remote</p>
-                <div className='mt-8 ml-auto flex max-w-lg'>
+                <div className='mt-8 ml-auto flex flex-col sm:flex-row gap-4 max-w-lg'>
                     <div className='whitespace-nowrap'>
                         <h4 className={'text-primary text-xl'}>Pro &#8226; gram &#8226; mer</h4>
                         <div className='flex items-center gap-3'>

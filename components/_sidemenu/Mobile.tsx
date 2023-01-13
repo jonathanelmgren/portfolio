@@ -8,11 +8,11 @@ export const MobileNav = ({ openMenu, menuState, children }: Props) => {
     return (
         <>
             <div className='cursor-pointer top-0 fixed z-50 bg-primary' onClick={() => openMenu(!menuState)}>
-                <svg id='burgericon' xmlns='http://www.w3.org/2000/svg' width='70' height='60'>
+                <svg id='burgericon' xmlns='http://www.w3.org/2000/svg' width='50' height='45'>
                     <g className='icon'>
-                        <rect className='frstbar' x='10' y='12' width='50' height='7' rx='3' ry='3' fill='#fff' />
-                        <rect className='scndbar' x='10' y='27' width='50' height='7' rx='3' ry='3' fill='#fff' />
-                        <rect className='thrdbar' x='10' y='42' width='50' height='7' rx='3' ry='3' fill='#fff' />
+                        <rect className='frstbar' x='10' y='10' width='30' height='5' fill='#fff' />
+                        <rect className='scndbar' x='10' y='20' width='30' height='5' fill='#fff' />
+                        <rect className='thrdbar' x='10' y='30' width='30' height='5' fill='#fff' />
                     </g>
                 </svg>
             </div>

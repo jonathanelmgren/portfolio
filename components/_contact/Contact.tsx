@@ -62,13 +62,13 @@ export const Contact = () => {
                     <textarea value={formData.message} name="message" required onChange={handleChange} className={`border-0 bg-transparent border-b-2 border-primary resize-none w-full ${formData.message.length > 1 ? 'h-52' : 'h-12'} transition-[height] overflow-hidden p-2 focus:border-2 focus:outline-none`} id="floating_message" placeholder="" />
                 </div>
                 <div className='flex justify-between mt-5'>
-                    <Links center />
                     <button disabled={loading} type="submit" className="text-white bg-primary hover:bg-primaryDark focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-12 py-2.5 text-center block">{loading ? 'Loading...' : 'Submit'}</button>
+                </div>
+                <div className='mt-8'>
+                <Links center />
                 </div>
                 {msg && <p className={`${msg.status === 'success' ? 'text-green-300' : 'text-red-300'} p-4 capitalize text-xl text-center`}>{msg.status}: {msg.msg}</p>}
             </form>
-            <div className='mt-12'>
-            </div>
         </div>
     )
 }

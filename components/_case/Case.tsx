@@ -79,7 +79,7 @@ const work: Work[] = [
 export const Case = () => {
 
   return (
-    <div className='my-24'>
+    <div className='md:my-24'>
       <div className='flex flex-wrap mx-auto gap-20 w-full  sm:justify-center '>
         {work.map((w) => <CaseCard key={w.title} work={w} />)}
       </div>
