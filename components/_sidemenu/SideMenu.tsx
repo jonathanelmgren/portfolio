@@ -22,20 +22,26 @@ export const SideMenu = () => {
     const [menuExpanded, setMenuExpanded] = useState(false)
     const [curve, setCurve] = useState('M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z')
     const [axis, setAxis] = useState({ x: 0, y: 0 })
-    const { width, height } = useWindowDimensions()
-
+    const dimensions = useWindowDimensions()
     const mousePosition = useMousePosition()
-
-    useEffect(() => {
-        animatedCurve()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[mousePosition])
+    let width = 0;
+    let height = 0;
 
     let targetX = 0
     let xitteration = 50
     let yitteration = 50
 
     let hoverZone = 350
+
+    useEffect(() => {
+        animatedCurve()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [mousePosition])
+
+    if (!dimensions) return <></>
+    width = dimensions.width
+    height = dimensions.height
+
 
     function animatedCurve() {
         if (axis.x > mousePosition.x - 1 && axis.x < mousePosition.x + 1) {
