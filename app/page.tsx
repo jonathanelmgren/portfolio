@@ -1,6 +1,6 @@
 import { Section } from '../components/_common/_section/Section';
 import { Header } from '../components/_header/Header';
-import { Work } from '../components/_work/Work';
+import { Case } from '../components/_case/Case';
 import { About } from '../components/_about/About';
 import { WhatIDo } from '../components/_whatido/WhatIDo';
 import { Contact } from '../components/_contact/Contact';
@@ -16,7 +16,7 @@ export default function Home() {
         <WhatIDo />
       </Section>
       <Section title={'Case'} anchor={Paths.work}>
-        <Work />
+        <Case />
       </Section>
       <Section title={'About me'} anchor={Paths.about}>
         <About />
