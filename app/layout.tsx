@@ -1,5 +1,5 @@
 import './globals.css'
-import { Space_Grotesk } from '@next/font/google'
+import { Space_Grotesk } from "next/font/google"
 import { SideMenu } from '../components/_sidemenu/SideMenu'
 
 const spaceGrotesk = Space_Grotesk({
