@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-const tools = ['React.js', 'Next.js 12', 'Next.js 13', 'Node.js', 'Express.js', 'MongoDB', 'SQL', 'PHP/Symfony', 'WordPress', 'PIM', 'Pimcore', 'WooCommerce', 'Sass', 'Redux', 'Styled components', 'Material UI', 'Tailwind CSS', 'Passport']
+const tools = ['React.js', 'Next.js', 'Node.js', 'Express.js', 'MongoDB', 'SQL', 'PHP/Symfony', 'WordPress', 'PIM', 'Pimcore', 'WooCommerce', 'Sass', 'Redux', 'Styled components', 'Material UI', 'Tailwind CSS', 'Passport']
 
 const adjectives = ['amazing', 'staggering', 'astonishing', 'flabbergasting', 'dazzling', 'surprising', 'wonderful', 'unbelievable', 'prodigius', 'stunning', 'fascinating', 'marvelous', 'incredible']
 

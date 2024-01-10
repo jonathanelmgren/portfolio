@@ -19,7 +19,7 @@ export const DesktopNav = ({ children, openMenu, menuState, axis, curve }: Props
     }
 
     return (
-        <div className={`top-0 fixed left-16 z-50 -translate-x-full bg-primary menu-transition h-full w-80${menuState ? ' left-0 translate-x-0' : ''}`} onMouseLeave={handleMouseLeave}>
+        <div className={`top-0 fixed z-50 -translate-x-full bg-primary menu-transition h-full w-80${menuState ? ' left-0 translate-x-0' : ''}`} onMouseLeave={handleMouseLeave}>
             <div className='absolute right-5 w-5 h-5 -mt-3 z-10' style={{ transform: `translate(${axis.x}px,${axis.y}px)` }}>
                 <div className='w-full h-1 bg-white absolute'></div>
                 <div className='w-full h-1 bg-white absolute top-1/2 -translate-y-1/2'></div>

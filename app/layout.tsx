@@ -1,11 +1,12 @@
-import './globals.css'
 import { Space_Grotesk } from "next/font/google"
 import { SideMenu } from '../components/_sidemenu/SideMenu'
+import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space--grotesk',
   weight: ['300', '400', '500', '700'],
-  display: 'swap'
+  display: 'swap',
+  subsets: ["latin"]
 })
 
 export default function RootLayout({
