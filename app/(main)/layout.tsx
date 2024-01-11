@@ -1,6 +1,6 @@
 import { Space_Grotesk } from "next/font/google"
-import { SideMenu } from '../components/_sidemenu/SideMenu'
-import './globals.css'
+import { SideMenu } from '../../components/_sidemenu/SideMenu'
+import '../globals.css'
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space--grotesk',

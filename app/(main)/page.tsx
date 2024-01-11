@@ -1,10 +1,10 @@
-import { Section } from '../components/_common/_section/Section';
-import { Header } from '../components/_header/Header';
-import { Case } from '../components/_case/Case';
-import { About } from '../components/_about/About';
-import { WhatIDo } from '../components/_whatido/WhatIDo';
-import { Contact } from '../components/_contact/Contact';
-import { Paths } from '../lib/consts/paths'
+import { About } from '../../components/_about/About';
+import { Case } from '../../components/_case/Case';
+import { Section } from '../../components/_common/_section/Section';
+import { Contact } from '../../components/_contact/Contact';
+import { Header } from '../../components/_header/Header';
+import { WhatIDo } from '../../components/_whatido/WhatIDo';
+import { Paths } from '../../lib/consts/paths';
 
 export default function Home() {
   return (
