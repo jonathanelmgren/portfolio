@@ -21,7 +21,6 @@ export const generateLogReport = (data: TDriversLogGenerator): TDriversLogReport
 
     const totalMileage = endingMileage - startingMileage;
     const totalWorkMileage = totalMileage * (workTripsInPercent / 100);
-    console.log('startingMileage',startingMileage)
 
     let currentMileage = startingMileage;
 
@@ -89,10 +88,10 @@ export const generateLogReport = (data: TDriversLogGenerator): TDriversLogReport
                 startingMileage: currentMileage,
                 endingMileage: endingMileage,
                 tripInKm: endingMileage - currentMileage,
-                startAdress: 'privat',
-                endAdress: 'privat',
-                purpose: 'privat',
-                comment: 'privat',
+                startAdress: 'Privat',
+                endAdress: 'Privat',
+                purpose: 'Privat',
+                comment: 'Privat',
             });
             break;
         }
@@ -101,10 +100,10 @@ export const generateLogReport = (data: TDriversLogGenerator): TDriversLogReport
             startingMileage: currentMileage,
             endingMileage: currentMileage + tripInKm,
             tripInKm: tripInKm,
-            startAdress: 'privat',
-            endAdress: 'privat',
-            purpose: 'privat',
-            comment: 'privat',
+            startAdress: 'Privat',
+            endAdress: 'Privat',
+            purpose: 'Privat',
+            comment: 'Privat',
         });
         currentMileage += tripInKm;
         daysLeft.splice(randomIndex, 1)
@@ -125,8 +124,8 @@ export const generateLogReport = (data: TDriversLogGenerator): TDriversLogReport
 
     report.trips = fixedMileages;
     report.totalKm = endingMileage - startingMileage;
-    report.totalKmInWorkTrips = report.trips.filter(trip => trip.purpose !== 'privat').reduce((acc, trip) => acc + trip.tripInKm, 0);
-    report.totalKmInPrivateTrips = report.trips.filter(trip => trip.purpose === 'privat').reduce((acc, trip) => acc + trip.tripInKm, 0);
+    report.totalKmInWorkTrips = report.trips.filter(trip => trip.purpose !== 'Privat').reduce((acc, trip) => acc + trip.tripInKm, 0);
+    report.totalKmInPrivateTrips = report.trips.filter(trip => trip.purpose === 'Privat').reduce((acc, trip) => acc + trip.tripInKm, 0);
 
     return report;
 };
@@ -161,7 +160,7 @@ const createRoundTrip = (trip: TTrip): TTrip => (
         endingMileage: trip.endingMileage + trip.tripInKm,
         startAdress: trip.endAdress,
         endAdress: trip.startAdress,
-        purpose: trip.purpose,
+        purpose: 'Returresa',
         comment: trip.comment,
         tripInKm: trip.tripInKm,
     }

@@ -1,19 +1,32 @@
 'use server'
 
 import puppeteer from 'puppeteer';
-import ReactDOMServer from 'react-dom/server';
 import { TDriversLogReport } from "../types";
-import { PDFLayout } from "./PDFLayout";
+import { PDFLayout, PDFLayoutCSS } from "./PDFLayout/PDFLayout";
 
 export const generatePDF = async (data: TDriversLogReport) => {
-    const htmlContent = ReactDOMServer.renderToString(<PDFLayout {...data} />);
+    const ReactDOMServer = (await import('react-dom/server')).default
+    const htmlContent = `
+    <html>
+        <head>
+            <style>
+                ${PDFLayoutCSS}
+            </style>
+        </head>
+        <body>
+            ${ReactDOMServer.renderToString(<PDFLayout {...data} />)}
+        </body>
+    </html>
+`;
 
     // Generate the PDF with Puppeteer
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ headless: 'new' });
     const page = await browser.newPage();
+    await page.addStyleTag({ content: PDFLayoutCSS })
     await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-    await page.pdf({ path: 'report.pdf', format: 'A4' });
+    const pdf = await page.pdf({ format: 'A4', landscape: true, });
+    const parsedPDF = JSON.parse(JSON.stringify(pdf))
 
     await browser.close();
-    console.log("PDF Generated");
+    return parsedPDF
 }

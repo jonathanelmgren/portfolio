@@ -30,6 +30,7 @@ import { driversLogGeneratorSchema } from "./schemas";
 import { TDriversLogGenerator, TRandomizedTrip } from "./types";
 import { getAllWeekNumbersBetweenDates, getPreviousMonthDates, numberToDay } from "./utils";
 import { generateLogReport } from "./utils/generateRandomTrips";
+import { generatePDF } from "./utils/server";
 
 const defaultRandomizedTrip: TRandomizedTrip = {
     startAdress: 'Angshestre 120',
@@ -67,11 +68,33 @@ export const JournalForm = () => {
         control: formMethods.control
     });
 
-    const onSubmit = (data: TDriversLogGenerator) => {
+    const onSubmit = async (data: TDriversLogGenerator) => {
         try {
             const logReport = generateLogReport(data)
+            const pdf = await generatePDF(logReport);
 
-            console.log(logReport);
+            const byteArray = new Uint8Array(pdf.data);
+
+            // Create a blob from the Uint8Array
+            const blob = new Blob([byteArray], { type: 'application/pdf' });
+
+            // Create a URL for the blob
+            const url = window.URL.createObjectURL(blob);
+
+            // Create a temporary anchor element and trigger download
+
+            const fromDate = format(data.dates.from, 'yyyy-MM-dd')
+            const toDate = format(data.dates.to, 'yyyy-MM-dd')
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `report-${data.registrationPlate}-${fromDate}-${toDate}`; // Name of the downloaded file
+            document.body.appendChild(a);
+            a.click();
+
+            // Clean up by revoking the object URL and removing the anchor element
+            window.URL.revokeObjectURL(url);
+            a.remove();
         } catch (e) {
             console.error(e)
         }
