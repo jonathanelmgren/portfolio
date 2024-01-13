@@ -1,6 +1,8 @@
 import * as z from "zod";
-import { mileageGeneratorSchema, randomizeTripSchema, tripSchema } from "./schemas";
+import { driversLogGeneratorSchema, driversLogReportSchema } from "./schemas";
 
-export type TRandomizedTrip = z.infer<typeof randomizeTripSchema>;
-export type TTrip = z.infer<typeof tripSchema>;
-export type TMileageGenerator = z.infer<typeof mileageGeneratorSchema>;
+export type TRandomizedTrip = TDriversLogGenerator['trips'][number];
+export type TTrip = TDriversLogReport['trips'][number];
+
+export type TDriversLogGenerator = z.infer<typeof driversLogGeneratorSchema>;
+export type TDriversLogReport = z.infer<typeof driversLogReportSchema>;

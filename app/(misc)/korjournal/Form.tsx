@@ -26,10 +26,10 @@ import { format } from "date-fns";
 import { useFieldArray, useForm } from "react-hook-form";
 import { WeekDays } from "./WeekDays";
 import { daysOfWeek } from "./consts";
-import { mileageGeneratorSchema } from "./schemas";
-import { TMileageGenerator, TRandomizedTrip } from "./types";
+import { driversLogGeneratorSchema } from "./schemas";
+import { TDriversLogGenerator, TRandomizedTrip } from "./types";
 import { getAllWeekNumbersBetweenDates, getPreviousMonthDates, numberToDay } from "./utils";
-import { generateTripReport } from "./utils/generateRandomTrips";
+import { generateLogReport } from "./utils/generateRandomTrips";
 
 const defaultRandomizedTrip: TRandomizedTrip = {
     startAdress: 'Angshestre 120',
@@ -40,11 +40,10 @@ const defaultRandomizedTrip: TRandomizedTrip = {
     roundTrip: true,
     daysOfWeek: ['1', '2', '3', '4', '5'],
     ignoreWeeksOfMonth: [],
-    tripOffset: 4,
     tripDistribution: 100
 }
 
-const defaultFormValues: TMileageGenerator = {
+const defaultFormValues: TDriversLogGenerator = {
     startingMileage: 0,
     endingMileage: 2657,
     dates: {
@@ -58,8 +57,8 @@ const defaultFormValues: TMileageGenerator = {
 
 export const JournalForm = () => {
     const { firstDayOfPreviousMonth, lastDayOfPreviousMonth } = getPreviousMonthDates();
-    const formMethods = useForm<TMileageGenerator>({
-        resolver: zodResolver(mileageGeneratorSchema),
+    const formMethods = useForm<TDriversLogGenerator>({
+        resolver: zodResolver(driversLogGeneratorSchema),
         defaultValues: { ...defaultFormValues, dates: { from: firstDayOfPreviousMonth, to: lastDayOfPreviousMonth } },
     });
 
@@ -68,9 +67,11 @@ export const JournalForm = () => {
         control: formMethods.control
     });
 
-    const onSubmit = (data: TMileageGenerator) => {
+    const onSubmit = (data: TDriversLogGenerator) => {
         try {
-            console.log(generateTripReport(data));
+            const logReport = generateLogReport(data)
+
+            console.log(logReport);
         } catch (e) {
             console.error(e)
         }
@@ -333,36 +334,17 @@ export const JournalForm = () => {
                                             </FormItem>
                                         )}
                                     />
-                                    <FormField
-                                        control={formMethods.control}
-                                        name={`trips.${index}.tripOffset`}
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Trip offset</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        {...field}
-                                                        placeholder="Trip in km"
-
-                                                    />
-                                                </FormControl>
-                                                <FormDescription>Offset in km</FormDescription>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
                                 </div>
                                 <FormField
                                     control={formMethods.control}
                                     name={`trips.${index}.roundTrip`}
                                     render={({ field, }) => {
-                                        const { value, ...rest } = field;
                                         return (
                                             <FormItem className="flex space-y-0 items-center gap-2">
                                                 <FormControl>
                                                     <Checkbox
-                                                        {...rest}
                                                         checked={field.value}
+                                                        onCheckedChange={field.onChange}
                                                     />
                                                 </FormControl>
                                                 <FormLabel>Round trip?</FormLabel>

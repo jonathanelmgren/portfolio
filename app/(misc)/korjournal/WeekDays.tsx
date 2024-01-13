@@ -3,10 +3,10 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/comp
 import { cn } from '@/lib/utils';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import { TMileageGenerator } from './types';
+import { TDriversLogGenerator } from './types';
 
 export const WeekDays: React.FC<{ index: number, weeks: number[] }> = ({ index, weeks }) => {
-    const form = useFormContext<TMileageGenerator>();
+    const form = useFormContext<TDriversLogGenerator>();
 
     return (
         <div className='flex gap-2 flex-wrap'>
