@@ -17,6 +17,6 @@ export const Links = ({ small = false, center = false }: { center?: boolean, sma
 
 const Link = ({ href, src, alt, small, ...props }: { small: boolean, href: string, src: string, alt: string }) => (
     <a {...props} href={href} rel="noreferrer" target={'_blank'} >
-        <Image src={src} alt={alt} width={small ? '30' : '50'} height='50' />
+        <Image unoptimized src={src} alt={alt} width={small ? '30' : '50'} height='50' />
     </a>
 )

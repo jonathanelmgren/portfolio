@@ -92,7 +92,7 @@ const CaseCard = ({ work }: { work: Work }) => {
 
   return (
     <div className='grid gap-2 sm:gap-6 grid-cols-1 sm:grid-cols-[12rem_20rem] items-center'>
-      <Image className='object-cover grayscale sm:justify-self-end hover:grayscale-0 duration-300 hover:scale-110 transition-all shrink-0 w-full max-w-[12rem] md:max-w-[18rem] aspect-square rounded-full overflow-hidden' src={work.image} alt={work.title} />
+      <Image unoptimized className='object-cover grayscale sm:justify-self-end hover:grayscale-0 duration-300 hover:scale-110 transition-all shrink-0 w-full max-w-[12rem] md:max-w-[18rem] aspect-square rounded-full overflow-hidden' src={work.image} alt={work.title} />
       <div className='md:my-4 self-start ml-2 sm:ml-0'>
         <div className='flex flex-wrap gap-2 mb-1'>
           {work.tags.map((t, i) => <span className='bg-primaryLight text-primaryDark text-xs font-medium px-2.5 py-0.5' key={i}>{t}</span>)}

@@ -35,7 +35,7 @@ import { generatePDF } from "./utils/server";
 const defaultRandomizedTrip: TRandomizedTrip = {
     startAdress: 'Angshestre 120',
     endAdress: 'Gunnar Engellaus väg 10',
-    tripInKm: 110,
+    tripInKm: 103,
     purpose: 'Volvo Cars AB',
     comment: 'Jonathan Elmgren',
     roundTrip: true,

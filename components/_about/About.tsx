@@ -23,7 +23,7 @@ export const About = () => {
 
     return (
         <div className='flex flex-col lg:flex-row items-center max-w-6xl mx-auto'>
-            <Image className='shrink-0 aspect-square rounded-full w-72 -mb-20 lg:mb-0 lg:-mr-12 z-10' src={me} alt='a picture of jonathan elmgren' />
+            <Image unoptimized className='shrink-0 aspect-square rounded-full w-72 -mb-20 lg:mb-0 lg:-mr-12 z-10' src={me} alt='a picture of jonathan elmgren' />
             <div className='bg-white p-6 shadow-lg pt-24 lg:pt-6 lg:pl-16'>
                 <h3 className='mt-0 relative text-primary my-4 text-left text-2xl md:text-2xl lg:text-3xl'>
                     {oneliners[count]}
