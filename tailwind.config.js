@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -17,16 +19,24 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      sans: ['var(--font-space--grotesk)', ...defaultTheme.fontFamily.sans]
+    },
     extend: {
+      gridTemplateColumns:{
+        aboutContainer: '35% 65%'
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        primaryDark: 'var(--color-primary--dark)',
+        primaryLight: 'var(--color-primary--light)',
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "var(--color-primary)",
+          foreground: "var(--color-primary--dark)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
