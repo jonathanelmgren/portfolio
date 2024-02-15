@@ -85,10 +85,10 @@ export const PDFLayout = (data: TDriversLogReport) => {
             <table>
                 <thead>
                     <tr>
-                        <th style={{ width: '100px' }}>Datum</th>
-                        <th style={{ width: '100px' }}>Start (km)</th>
-                        <th style={{ width: '100px' }}>Slut (km)</th>
-                        <th style={{ width: '100px' }}>Reslängd (km)</th>
+                        <th style={{ width: '70px' }}>Datum</th>
+                        <th style={{ width: '70px' }}>Start (km)</th>
+                        <th style={{ width: '70px' }}>Slut (km)</th>
+                        <th style={{ width: '70px' }}>Reslängd (km)</th>
                         <th>Startadress</th>
                         <th>Ärende</th>
                         <th>Slutadress</th>
@@ -98,10 +98,10 @@ export const PDFLayout = (data: TDriversLogReport) => {
                 <tbody>
                     {data.trips.map((trip, i) => (
                         <tr key={i}>
-                            <td style={{ width: '100px' }}>{formattedDate(trip.date)}</td>
-                            <td style={{ width: '100px' }}>{trip.startingMileage}</td>
-                            <td style={{ width: '100px' }}>{trip.endingMileage}</td>
-                            <td style={{ width: '100px' }}>{trip.tripInKm}</td>
+                            <td style={{ width: '70px' }}>{formattedDate(trip.date)}</td>
+                            <td style={{ width: '70px' }}>{trip.startingMileage}</td>
+                            <td style={{ width: '70px' }}>{trip.endingMileage}</td>
+                            <td style={{ width: '70px' }}>{trip.tripInKm}</td>
                             <td>{trip.startAdress}</td>
                             <td>{trip.purpose}</td>
                             <td>{trip.endAdress}</td>
