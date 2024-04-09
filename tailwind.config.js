@@ -1,14 +1,14 @@
-const defaultTheme = require("tailwindcss/defaultTheme")
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-    './@/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./@/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -20,11 +20,11 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['var(--font-space--grotesk)', ...defaultTheme.fontFamily.sans]
+      sans: ["var(--font-space--grotesk)", ...defaultTheme.fontFamily.sans],
     },
     extend: {
-      gridTemplateColumns:{
-        aboutContainer: '35% 65%'
+      gridTemplateColumns: {
+        aboutContainer: "35% 65%",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -32,8 +32,8 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primaryDark: 'var(--color-primary--dark)',
-        primaryLight: 'var(--color-primary--light)',
+        primaryDark: "var(--color-primary--dark)",
+        primaryLight: "var(--color-primary--light)",
         primary: {
           DEFAULT: "var(--color-primary)",
           foreground: "var(--color-primary--dark)",
@@ -85,4 +85,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
