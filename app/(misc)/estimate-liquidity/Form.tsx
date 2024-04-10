@@ -5,19 +5,20 @@ import {
     addDays,
     addMonths,
     compareAsc,
+    eachDayOfInterval,
     format,
     isBefore,
     isSameDay,
-    parseISO
+    parseISO,
 } from "date-fns";
 import { useEffect, useState } from "react";
 
-const formatter = new Intl.NumberFormat('sv-SE', {
-    style: 'currency',
-    currency: 'SEK',
-    minimumFractionDigits: 2, // Minimum number of fraction digits
-    maximumFractionDigits: 2, // Maximum number of fraction digits
-  });
+const formatter = new Intl.NumberFormat("sv-SE", {
+  style: "currency",
+  currency: "SEK",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
 
 type Entry = {
   amount: number;
@@ -34,11 +35,11 @@ type IncomeEntry = Entry & {
 type ExpenseEntry = Entry;
 
 type Transaction = {
-    date: string;
-    description: string;
-    amount: number;
-    type: "income" | "expense";
-}
+  date: string;
+  description: string;
+  amount: number;
+  type: "income" | "expense";
+};
 
 const initialExpenses: ExpenseEntry[] = [
   {
@@ -170,15 +171,16 @@ const initialIncomes: IncomeEntry[] = [
 ];
 
 const Form = () => {
-    const todayTwoMonthsAhead = addMonths(new Date(), 2);
+  const todayTwoMonthsAhead = addMonths(new Date(), 6);
   const [incomeEntries, setIncomeEntries] =
     useState<IncomeEntry[]>(initialIncomes);
   const [expenseEntries, setExpenseEntries] =
     useState<ExpenseEntry[]>(initialExpenses);
   const [currentLiquidity, setCurrentLiquidity] = useState(188000);
-  const [estimateDate, setEstimateDate] = useState(format(todayTwoMonthsAhead, "yyyy-MM-dd"));
+  const [estimateDate, setEstimateDate] = useState(
+    format(todayTwoMonthsAhead, "yyyy-MM-dd"),
+  );
   const [totalTransactions, setTotalTransactions] = useState<Transaction[]>([]);
-  const [estimatedLiquidity, setEstimatedLiquidity] = useState(0);
 
   const addEntry = (
     entry: IncomeEntry | ExpenseEntry,
@@ -207,12 +209,11 @@ const Form = () => {
     }
   };
 
+  const {min,max, minDate,maxDate} = calculateMinMaxLiquidity(totalTransactions, currentLiquidity);
+
   useEffect(() => {
     const totalIncome = incomeEntries.flatMap((entry) => {
-      const totalOccurrences = getRecurringDates(
-        entry,
-        estimateDate,
-      );
+      const totalOccurrences = getRecurringDates(entry, estimateDate);
       return totalOccurrences.map((date) => ({ ...entry, date }));
     });
     const totalExpenses = expenseEntries.flatMap((entry) => {
@@ -220,54 +221,57 @@ const Form = () => {
       return totalOccurrences.map((date) => ({ ...entry, date }));
     });
 
-    const vatExpenses: ExpenseEntry[] = totalIncome.map((entry) => {
-      const vatAmount = (entry.amount * entry.vat) / 100;
-      const date = new Date(entry.date);
-      const datePlusTwoMonths = addMonths(date, 2);
-      datePlusTwoMonths.setDate(12);
-      const formattedDate = format(datePlusTwoMonths, "yyyy-MM-dd");
-      return {
-        amount: vatAmount,
-        vat: 0,
-        date: formattedDate,
-        description: `VAT - ${entry.description}`,
-        recurring: true,
-      };
-    }).filter(entry => parseISO(entry.date) <= parseISO(estimateDate));
+    const vatExpenses: ExpenseEntry[] = totalIncome
+      .map((entry) => {
+        const vatAmount = (entry.amount * entry.vat) / 100;
+        const date = new Date(entry.date);
+        const datePlusTwoMonths = addMonths(date, 2);
+        datePlusTwoMonths.setDate(12);
+        const formattedDate = format(datePlusTwoMonths, "yyyy-MM-dd");
+        return {
+          amount: vatAmount,
+          vat: 0,
+          date: formattedDate,
+          description: `VAT - ${entry.description}`,
+          recurring: true,
+        };
+      })
+      .filter((entry) => parseISO(entry.date) <= parseISO(estimateDate));
     const expensesWithVat = [...totalExpenses, ...vatExpenses];
 
-    const totalTransactions = [...totalIncome, ...expensesWithVat].map(entry => {
-        const type = 'dueDays' in entry ? "income" : "expense";
-        const date = 'dueDays' in entry && typeof entry.dueDays === 'number' ? format(
-            addDays(new Date(entry.date), entry.dueDays),
-            "yyyy-MM-dd",
-          ) : entry.date;
+    const totalTransactions = [...totalIncome, ...expensesWithVat]
+      .map((entry) => {
+        const type = "dueDays" in entry ? "income" : "expense";
+        const date =
+          "dueDays" in entry && typeof entry.dueDays === "number"
+            ? format(addDays(new Date(entry.date), entry.dueDays), "yyyy-MM-dd")
+            : entry.date;
         const amountWithVat = entry.amount + (entry.amount * entry.vat) / 100;
         const isWithinEstimateDate = parseISO(date) <= parseISO(estimateDate);
         const isAfterToday = parseISO(date) >= new Date();
-    
-        return isWithinEstimateDate && isAfterToday ? {
-            date,
-            description: entry.description,
-            amount: type === "income" ? amountWithVat : -amountWithVat,
-            type,
-        } as const : false;
-    }).filter(Boolean) as Transaction[];
+
+        return isWithinEstimateDate && isAfterToday ? ({
+              date,
+              description: entry.description,
+              amount: type === "income" ? amountWithVat : -amountWithVat,
+              type,
+            } as const) : false
+          ;
+      }).filter(Boolean) as Transaction[];
 
     totalTransactions.sort((a, b) =>
-    compareAsc(parseISO(a.date), parseISO(b.date)),
+      compareAsc(parseISO(a.date), parseISO(b.date)),
     );
 
     setTotalTransactions(totalTransactions);
   }, [incomeEntries, expenseEntries, currentLiquidity, estimateDate]);
 
-  useEffect(() => {
-    const totalAmount = totalTransactions.reduce((acc, transaction) => {
-        return acc + transaction.amount;
-    }, currentLiquidity);
-
-    setEstimatedLiquidity(totalAmount);
-  },[totalTransactions, currentLiquidity])
+  const totalAmount = calculateEstimatedLiquidity(
+    totalTransactions,
+    currentLiquidity,
+    estimateDate,
+  );
+  const dates = generateDates(totalTransactions, [1, 14, 28]);
 
   return (
     <div>
@@ -304,12 +308,63 @@ const Form = () => {
         </label>
         <input
           type="text"
-          value={formatter.format(estimatedLiquidity)}
+          value={formatter.format(totalAmount)}
           className="p-1 border rounded"
           readOnly
           disabled
-        /> <span>at {estimateDate}</span>
+        />{" "}
+        <span>at {estimateDate}</span>
       </div>
+      <div className="flex gap-8 mt-12">
+        <div>
+          <h2 className="text-lg font-bold mb-4">Transactions</h2>
+          <div className="h-96 overflow-auto">
+            {totalTransactions.map((transaction) => (
+              <div
+                key={JSON.stringify(transaction)}
+                className={cn(
+                  "flex gap-4 p-2 items-center justify-between",
+                  transaction.amount < 0 ? "bg-red-50" : "bg-green-50",
+                )}
+              >
+                <div className="grow-0 shrink-0">{transaction.date}</div>
+                <div style={{ whiteSpace: "nowrap", overflow: "hidden" }}>
+                  {transaction.description}
+                </div>
+                <div>{formatter.format(transaction.amount)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold mb-4">Estimated liquidity at dates</h2>
+          <div className="h-96 overflow-auto">
+            {dates.map((date) => {
+              const liquidity = calculateEstimatedLiquidity(
+                totalTransactions,
+                currentLiquidity,
+                date,
+              );
+              return (
+                <div
+                  key={date}
+                  className="flex gap-4 p-2 items-center justify-between bg-green-50"
+                >
+                  <div className="grow-0 shrink-0">{date}</div>
+                  <div>{formatter.format(liquidity)}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div>
+            Min: {formatter.format(min)} - {minDate}
+            <br />
+            Max: {formatter.format(max)} - {maxDate} 
+        </div>
+        
+      </div>
+      
       <div className="flex justify-center mt-10 w-full gap-4">
         <div className="flex flex-col">
           <h2 className="text-lg font-bold mb-4">Income</h2>
@@ -347,8 +402,8 @@ const Form = () => {
           <div>
             {expenseEntries.map((entry, index) => (
               <div
-              key={`${index}-${entry.date}-${entry.amount}`}
-              className="flex justify-between items-center bg-red-200 p-2 my-2"
+                key={`${index}-${entry.date}-${entry.amount}`}
+                className="flex justify-between items-center bg-red-200 p-2 my-2"
               >
                 <span>{entry.amount} SEK</span>
                 <span>VAT: {entry.vat}%</span>
@@ -372,17 +427,7 @@ const Form = () => {
           </div>
         </div>
       </div>
-      <h2 className="text-lg font-bold mb-4">Transactions</h2>
-      <div className="max-w-96 h-96 overflow-auto">
-
-      {totalTransactions.map((transaction) => (
-          <div key={JSON.stringify(transaction)} className={cn("flex gap-4 p-2 items-center justify-between", transaction.amount < 0 ? 'bg-red-50' : 'bg-green-50')}>
-          <div className="grow-0 shrink-0">{transaction.date}</div>
-          <div style={{whiteSpace:'nowrap', overflow:'hidden'}}>{transaction.description}</div>
-          <div>{formatter.format(transaction.amount)}</div>
-        </div>
-      ))}
-      </div>
+     
     </div>
   );
 };
@@ -454,13 +499,13 @@ const EntryForm: React.FC<{
           required
         />
       )}
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="p-1 border rounded w-28"
-            required
-          />
+      <input
+        type="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        className="p-1 border rounded w-28"
+        required
+      />
       <div className="flex  items-center gap-1">
         <input
           type="checkbox"
@@ -481,8 +526,11 @@ const EntryForm: React.FC<{
 };
 
 function getRecurringDates(entry: Entry, goalDateString: string): string[] {
-    const goalDate = new Date(goalDateString);
-  if (!entry.recurring && isBefore(entry.date, goalDate) || isSameDay(entry.date, goalDate)) {
+  const goalDate = new Date(goalDateString);
+  if (
+    (!entry.recurring && isBefore(entry.date, goalDate)) ||
+    isSameDay(entry.date, goalDate)
+  ) {
     return [entry.date];
   }
 
@@ -497,3 +545,104 @@ function getRecurringDates(entry: Entry, goalDateString: string): string[] {
 
   return dates;
 }
+
+function calculateEstimatedLiquidity(
+  transactions: Transaction[],
+  currentLiquidity: number,
+  estimateDate: string,
+): number {
+  const total = transactions
+    .filter(
+      (transaction) =>
+        isBefore(parseISO(transaction.date), parseISO(estimateDate)) ||
+        isSameDay(parseISO(transaction.date), parseISO(estimateDate)),
+    )
+    .reduce((total, transaction) => total + transaction.amount, 0);
+
+  const estimatedLiquidity = currentLiquidity + total;
+
+  return estimatedLiquidity;
+}
+
+function generateDates(transactions: Transaction[], days: number[]): string[] {
+  if (transactions.length === 0) {
+    return [];
+  }
+
+  // Sort transactions by date
+  transactions.sort((a, b) => compareAsc(parseISO(a.date), parseISO(b.date)));
+
+  // Get the first and last transaction dates
+  const firstDate = parseISO(transactions[0].date);
+  const lastDate = parseISO(transactions[transactions.length - 1].date);
+
+  // Initialize the current date to the first date
+  let currentDate = new Date(firstDate.getFullYear(), firstDate.getMonth(), 1);
+
+  const dates: string[] = [];
+
+  // While the current date is before or the same as the last date
+  while (compareAsc(currentDate, lastDate) <= 0) {
+    // If the day of the current date is in the days array, add it to the dates array
+    if (days.includes(currentDate.getDate())) {
+      dates.push(format(currentDate, "yyyy-MM-dd"));
+    }
+
+    // If the current date is the last day of the month, increment the month
+    if (
+      currentDate.getDate() ===
+      new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() + 1,
+        0,
+      ).getDate()
+    ) {
+      currentDate = addMonths(currentDate, 1);
+      currentDate.setDate(1);
+    } else {
+      // Otherwise, increment the day
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+  }
+
+  return dates;
+}
+
+
+function calculateMinMaxLiquidity(transactions: Transaction[], currentLiquidity:number): { min: number, max: number, minDate: string, maxDate: string } {
+    let minLiquidity = Number.POSITIVE_INFINITY;
+    let maxLiquidity = Number.NEGATIVE_INFINITY;
+    let minDate = '';
+    let maxDate = '';
+
+    const firstTransactionDate = transactions[0]?.date;
+    const lastTransactionDate = transactions[transactions.length - 1]?.date;
+    const dates = getAllDatesBetween(firstTransactionDate, lastTransactionDate)
+
+    // For each date, calculate the estimated liquidity
+    for (const date of dates) {
+        const liquidity = calculateEstimatedLiquidity(transactions, currentLiquidity, date);
+        if (liquidity < minLiquidity) {
+            minLiquidity = liquidity;
+            minDate = date;
+        }
+        if (liquidity > maxLiquidity) {
+            maxLiquidity = liquidity;
+            maxDate = date;
+        }
+    }
+
+    return { min: minLiquidity, max: maxLiquidity, minDate, maxDate };
+}
+
+function getAllDatesBetween(startDate: string, endDate: string): string[] {
+    const startDateObj = new Date(startDate);
+    const endDateObj = new Date(endDate);
+  
+    const allDates = eachDayOfInterval({
+      start: startDateObj,
+      end: endDateObj,
+    });
+  
+    return allDates.map(date => format(date, "yyyy-MM-dd"));
+  }
