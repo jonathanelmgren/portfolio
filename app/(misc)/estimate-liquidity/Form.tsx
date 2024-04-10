@@ -317,7 +317,7 @@ const Form = () => {
       </div>
       <div className="flex gap-8 mt-12">
         <div>
-          <h2 className="text-lg font-bold mb-4">Transactions</h2>
+          <h2 className="text-lg font-bold mb-4">Transactions (inc VAT)</h2>
           <div className="h-96 overflow-auto">
             {totalTransactions.map((transaction) => (
               <div
@@ -367,7 +367,7 @@ const Form = () => {
       
       <div className="flex justify-center mt-10 w-full gap-4">
         <div className="flex flex-col">
-          <h2 className="text-lg font-bold mb-4">Income</h2>
+          <h2 className="text-lg font-bold mb-4">Income (ex. VAT)</h2>
           <div>
             {incomeEntries.map((entry, index) => (
               <div
@@ -398,7 +398,7 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col">
-          <h2 className="text-lg font-bold mb-4">Expenses</h2>
+          <h2 className="text-lg font-bold mb-4">Expenses (ex. VAT)</h2>
           <div>
             {expenseEntries.map((entry, index) => (
               <div
@@ -506,7 +506,7 @@ const EntryForm: React.FC<{
         className="p-1 border rounded w-28"
         required
       />
-      <div className="flex  items-center gap-1">
+      <div className="flex items-center gap-1">
         <input
           type="checkbox"
           checked={recurring}
