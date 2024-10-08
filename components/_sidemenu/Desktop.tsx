@@ -25,7 +25,7 @@ export const DesktopNav = ({
 
   return (
     <div
-      className={`top-0 fixed z-50 -translate-x-full bg-primary menu-transition h-full w-80${menuState ? " left-0 translate-x-0" : ""}`}
+      className={`top-0 fixed z-50 -translate-x-[calc(100%-60px)] bg-primary menu-transition h-full w-80${menuState ? " left-0 translate-x-0" : ""}`}
       onMouseLeave={handleMouseLeave}
     >
       <div

@@ -54,6 +54,10 @@ export const PDFLayout = (data: TDriversLogReport) => {
 
   const formattedDate = (date: Date) => format(date, "d/M");
 
+  const roundToTwoDecimals = (num: number) => {
+    return num.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  };
+  
   return (
     <div>
       <h1>Körjournal</h1>
@@ -75,16 +79,16 @@ export const PDFLayout = (data: TDriversLogReport) => {
         </span>
       </div>
       <div style={{ marginTop: "16px" }}>
-        <span>Totalt antal körda mil: {data.totalKm}km</span>
+        <span>Totalt antal körda mil: {roundToTwoDecimals(data.totalKm)}km</span>
         <span style={{ marginLeft: "16px" }}>
-          Totalt antal privatmil: {data.totalKmInPrivateTrips}km
+          Totalt antal privatmil: {roundToTwoDecimals(data.totalKmInPrivateTrips)}km
         </span>
         <span style={{ marginLeft: "16px" }}>
-          Totalt antal tjänstemil: {data.totalKmInWorkTrips}km
+          Totalt antal tjänstemil: {roundToTwoDecimals(data.totalKmInWorkTrips)}km
         </span>
         <span style={{ marginLeft: "16px" }}>
           Total ersättning:{" "}
-          <strong>{data.totalKmInWorkTrips * MILEAGE_COMPENSATION}:-</strong>
+          <strong>{roundToTwoDecimals(data.totalKmInWorkTrips * MILEAGE_COMPENSATION)}:-</strong>
         </span>
       </div>
       <table>
@@ -104,9 +108,9 @@ export const PDFLayout = (data: TDriversLogReport) => {
           {data.trips.map((trip, i) => (
             <tr key={i}>
               <td style={{ width: "70px" }}>{formattedDate(trip.date)}</td>
-              <td style={{ width: "70px" }}>{trip.startingMileage}</td>
-              <td style={{ width: "70px" }}>{trip.endingMileage}</td>
-              <td style={{ width: "70px" }}>{trip.tripInKm}</td>
+              <td style={{ width: "70px" }}>{roundToTwoDecimals(trip.startingMileage)}</td>
+              <td style={{ width: "70px" }}>{roundToTwoDecimals(trip.endingMileage)}</td>
+              <td style={{ width: "70px" }}>{roundToTwoDecimals(trip.tripInKm)}</td>
               <td>{trip.startAdress}</td>
               <td>{trip.purpose}</td>
               <td>{trip.endAdress}</td>
